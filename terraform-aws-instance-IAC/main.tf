@@ -1,5 +1,8 @@
 terraform {
   required_providers {
+    # Terraform installs providers from the Terraform Registry by default. 
+    # In this example configuration, the aws provider's source is defined as hashicorp/aws,
+    # which is shorthand for registry.terraform.io/hashicorp/aws
     aws = {
       source  = "hashicorp/aws"
       version = "~> 4.16"
@@ -14,11 +17,10 @@ provider "aws" {
 }
 
 resource "aws_instance" "app_server" {
-  ami           = "ami-08d70e59c07c61a3a"
+  ami           = "ami-830c94e3"
   instance_type = "t2.micro"
 
   tags = {
-   Name = var.instance_name
+    Name = "ExampleAppServerInstance"
   }
 }
-
